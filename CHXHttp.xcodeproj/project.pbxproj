@@ -1,0 +1,477 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		46DA0F1F1D746DBA007248E5 /* CHXHttpEndpoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 46DA0F1E1D746DBA007248E5 /* CHXHttpEndpoint.m */; };
+		46DA0F221D7471F7007248E5 /* LoginApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 46DA0F211D7471F7007248E5 /* LoginApi.m */; };
+		46DA0F251D747333007248E5 /* BaseApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 46DA0F241D747333007248E5 /* BaseApi.m */; };
+		46DA0F291D7479B0007248E5 /* CHXHttpBatchTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 46DA0F281D7479B0007248E5 /* CHXHttpBatchTask.m */; };
+		46DA0F2F1D748AAD007248E5 /* NSDataExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 46DA0F2C1D748AAD007248E5 /* NSDataExtension.m */; };
+		46DA0F301D748AAD007248E5 /* NSString+MD5.m in Sources */ = {isa = PBXBuildFile; fileRef = 46DA0F2E1D748AAD007248E5 /* NSString+MD5.m */; };
+		46DA0F331D751991007248E5 /* NSDictionary+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 46DA0F321D751991007248E5 /* NSDictionary+Extension.m */; };
+		46DA0F361D751C4C007248E5 /* CHXHttpProcessor.m in Sources */ = {isa = PBXBuildFile; fileRef = 46DA0F351D751C4C007248E5 /* CHXHttpProcessor.m */; };
+		46DA0F431D757B91007248E5 /* AppStartApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 46DA0F421D757B91007248E5 /* AppStartApi.m */; };
+		46DA0F481D75D56D007248E5 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 46DA0F4A1D75D56D007248E5 /* Localizable.strings */; };
+		46EBE4C71D7438C60050E514 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 46EBE4C61D7438C60050E514 /* main.m */; };
+		46EBE4CA1D7438C60050E514 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 46EBE4C91D7438C60050E514 /* AppDelegate.m */; };
+		46EBE4CD1D7438C60050E514 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46EBE4CC1D7438C60050E514 /* ViewController.m */; };
+		46EBE4D01D7438C60050E514 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 46EBE4CE1D7438C60050E514 /* Main.storyboard */; };
+		46EBE4D21D7438C60050E514 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 46EBE4D11D7438C60050E514 /* Assets.xcassets */; };
+		46EBE4D51D7438C60050E514 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 46EBE4D31D7438C60050E514 /* LaunchScreen.storyboard */; };
+		9DE4143E72BF598AF67B9CFE /* libPods-CHXHttp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E581F83D5EDC326DF750CEA0 /* libPods-CHXHttp.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		2E9812169B98FA1C6FEFA26C /* Pods-CHXHttp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CHXHttp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CHXHttp/Pods-CHXHttp.debug.xcconfig"; sourceTree = "<group>"; };
+		46DA0F1D1D746DBA007248E5 /* CHXHttpEndpoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHXHttpEndpoint.h; sourceTree = "<group>"; };
+		46DA0F1E1D746DBA007248E5 /* CHXHttpEndpoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHXHttpEndpoint.m; sourceTree = "<group>"; };
+		46DA0F201D7471F7007248E5 /* LoginApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginApi.h; sourceTree = "<group>"; };
+		46DA0F211D7471F7007248E5 /* LoginApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginApi.m; sourceTree = "<group>"; };
+		46DA0F231D747333007248E5 /* BaseApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseApi.h; sourceTree = "<group>"; };
+		46DA0F241D747333007248E5 /* BaseApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseApi.m; sourceTree = "<group>"; };
+		46DA0F271D7479B0007248E5 /* CHXHttpBatchTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHXHttpBatchTask.h; sourceTree = "<group>"; };
+		46DA0F281D7479B0007248E5 /* CHXHttpBatchTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHXHttpBatchTask.m; sourceTree = "<group>"; };
+		46DA0F2B1D748AAD007248E5 /* NSDataExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSDataExtension.h; sourceTree = "<group>"; };
+		46DA0F2C1D748AAD007248E5 /* NSDataExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSDataExtension.m; sourceTree = "<group>"; };
+		46DA0F2D1D748AAD007248E5 /* NSString+MD5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+MD5.h"; sourceTree = "<group>"; };
+		46DA0F2E1D748AAD007248E5 /* NSString+MD5.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+MD5.m"; sourceTree = "<group>"; };
+		46DA0F311D751991007248E5 /* NSDictionary+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+Extension.h"; sourceTree = "<group>"; };
+		46DA0F321D751991007248E5 /* NSDictionary+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+Extension.m"; sourceTree = "<group>"; };
+		46DA0F341D751C4C007248E5 /* CHXHttpProcessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHXHttpProcessor.h; sourceTree = "<group>"; };
+		46DA0F351D751C4C007248E5 /* CHXHttpProcessor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHXHttpProcessor.m; sourceTree = "<group>"; };
+		46DA0F371D7526CD007248E5 /* CHXHttpEndpoint+Internal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CHXHttpEndpoint+Internal.h"; sourceTree = "<group>"; };
+		46DA0F411D757B91007248E5 /* AppStartApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppStartApi.h; sourceTree = "<group>"; };
+		46DA0F421D757B91007248E5 /* AppStartApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppStartApi.m; sourceTree = "<group>"; };
+		46DA0F441D758240007248E5 /* CHXHttp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CHXHttp.h; sourceTree = "<group>"; };
+		46DA0F491D75D56D007248E5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		46EBE4C21D7438C60050E514 /* CHXHttp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CHXHttp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		46EBE4C61D7438C60050E514 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		46EBE4C81D7438C60050E514 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		46EBE4C91D7438C60050E514 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		46EBE4CB1D7438C60050E514 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		46EBE4CC1D7438C60050E514 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		46EBE4CF1D7438C60050E514 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		46EBE4D11D7438C60050E514 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		46EBE4D41D7438C60050E514 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		46EBE4D61D7438C60050E514 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		46EBE4E61D743BCB0050E514 /* CHXHttpRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CHXHttpRequest.h; sourceTree = "<group>"; };
+		46EBE4E71D743BDA0050E514 /* CHXHttpResponse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CHXHttpResponse.h; sourceTree = "<group>"; };
+		927D6E2C6CD066E769B35881 /* Pods-CHXHttp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CHXHttp.release.xcconfig"; path = "Pods/Target Support Files/Pods-CHXHttp/Pods-CHXHttp.release.xcconfig"; sourceTree = "<group>"; };
+		E581F83D5EDC326DF750CEA0 /* libPods-CHXHttp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CHXHttp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		46EBE4BF1D7438C60050E514 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9DE4143E72BF598AF67B9CFE /* libPods-CHXHttp.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		46DA0F2A1D748AAD007248E5 /* Vendors */ = {
+			isa = PBXGroup;
+			children = (
+				46DA0F2B1D748AAD007248E5 /* NSDataExtension.h */,
+				46DA0F2C1D748AAD007248E5 /* NSDataExtension.m */,
+				46DA0F2D1D748AAD007248E5 /* NSString+MD5.h */,
+				46DA0F2E1D748AAD007248E5 /* NSString+MD5.m */,
+				46DA0F311D751991007248E5 /* NSDictionary+Extension.h */,
+				46DA0F321D751991007248E5 /* NSDictionary+Extension.m */,
+			);
+			path = Vendors;
+			sourceTree = "<group>";
+		};
+		46EBE4B91D7438C60050E514 = {
+			isa = PBXGroup;
+			children = (
+				46DA0F2A1D748AAD007248E5 /* Vendors */,
+				46EBE4DC1D7438D10050E514 /* Sources */,
+				46EBE4C41D7438C60050E514 /* CHXHttp */,
+				46EBE4C31D7438C60050E514 /* Products */,
+				546886C6F0E2439A9BE01623 /* Pods */,
+				EFD4B0D595565A57365B4110 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		46EBE4C31D7438C60050E514 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				46EBE4C21D7438C60050E514 /* CHXHttp.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		46EBE4C41D7438C60050E514 /* CHXHttp */ = {
+			isa = PBXGroup;
+			children = (
+				46DA0F231D747333007248E5 /* BaseApi.h */,
+				46DA0F241D747333007248E5 /* BaseApi.m */,
+				46DA0F201D7471F7007248E5 /* LoginApi.h */,
+				46DA0F211D7471F7007248E5 /* LoginApi.m */,
+				46DA0F411D757B91007248E5 /* AppStartApi.h */,
+				46DA0F421D757B91007248E5 /* AppStartApi.m */,
+				46EBE4C81D7438C60050E514 /* AppDelegate.h */,
+				46EBE4C91D7438C60050E514 /* AppDelegate.m */,
+				46EBE4CB1D7438C60050E514 /* ViewController.h */,
+				46EBE4CC1D7438C60050E514 /* ViewController.m */,
+				46DA0F4A1D75D56D007248E5 /* Localizable.strings */,
+				46EBE4CE1D7438C60050E514 /* Main.storyboard */,
+				46EBE4D11D7438C60050E514 /* Assets.xcassets */,
+				46EBE4D31D7438C60050E514 /* LaunchScreen.storyboard */,
+				46EBE4D61D7438C60050E514 /* Info.plist */,
+				46EBE4C51D7438C60050E514 /* Supporting Files */,
+			);
+			path = CHXHttp;
+			sourceTree = "<group>";
+		};
+		46EBE4C51D7438C60050E514 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				46EBE4C61D7438C60050E514 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		46EBE4DC1D7438D10050E514 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				46DA0F441D758240007248E5 /* CHXHttp.h */,
+				46EBE4E61D743BCB0050E514 /* CHXHttpRequest.h */,
+				46EBE4E71D743BDA0050E514 /* CHXHttpResponse.h */,
+				46DA0F371D7526CD007248E5 /* CHXHttpEndpoint+Internal.h */,
+				46DA0F1D1D746DBA007248E5 /* CHXHttpEndpoint.h */,
+				46DA0F1E1D746DBA007248E5 /* CHXHttpEndpoint.m */,
+				46DA0F271D7479B0007248E5 /* CHXHttpBatchTask.h */,
+				46DA0F281D7479B0007248E5 /* CHXHttpBatchTask.m */,
+				46DA0F341D751C4C007248E5 /* CHXHttpProcessor.h */,
+				46DA0F351D751C4C007248E5 /* CHXHttpProcessor.m */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		546886C6F0E2439A9BE01623 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				2E9812169B98FA1C6FEFA26C /* Pods-CHXHttp.debug.xcconfig */,
+				927D6E2C6CD066E769B35881 /* Pods-CHXHttp.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		EFD4B0D595565A57365B4110 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E581F83D5EDC326DF750CEA0 /* libPods-CHXHttp.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		46EBE4C11D7438C60050E514 /* CHXHttp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 46EBE4D91D7438C60050E514 /* Build configuration list for PBXNativeTarget "CHXHttp" */;
+			buildPhases = (
+				83DC8B0FC9C7C51937D2A277 /* [CP] Check Pods Manifest.lock */,
+				46EBE4BE1D7438C60050E514 /* Sources */,
+				46EBE4BF1D7438C60050E514 /* Frameworks */,
+				46EBE4C01D7438C60050E514 /* Resources */,
+				7AD4D65CB68F5AC876A03DFA /* [CP] Embed Pods Frameworks */,
+				7A736D37DABA84DC0D175900 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CHXHttp;
+			productName = CHXHttp;
+			productReference = 46EBE4C21D7438C60050E514 /* CHXHttp.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		46EBE4BA1D7438C60050E514 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = "Moch Xiao";
+				TargetAttributes = {
+					46EBE4C11D7438C60050E514 = {
+						CreatedOnToolsVersion = 7.3.1;
+					};
+				};
+			};
+			buildConfigurationList = 46EBE4BD1D7438C60050E514 /* Build configuration list for PBXProject "CHXHttp" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 46EBE4B91D7438C60050E514;
+			productRefGroup = 46EBE4C31D7438C60050E514 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				46EBE4C11D7438C60050E514 /* CHXHttp */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		46EBE4C01D7438C60050E514 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				46EBE4D51D7438C60050E514 /* LaunchScreen.storyboard in Resources */,
+				46DA0F481D75D56D007248E5 /* Localizable.strings in Resources */,
+				46EBE4D21D7438C60050E514 /* Assets.xcassets in Resources */,
+				46EBE4D01D7438C60050E514 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		7A736D37DABA84DC0D175900 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CHXHttp/Pods-CHXHttp-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7AD4D65CB68F5AC876A03DFA /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CHXHttp/Pods-CHXHttp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		83DC8B0FC9C7C51937D2A277 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		46EBE4BE1D7438C60050E514 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				46DA0F331D751991007248E5 /* NSDictionary+Extension.m in Sources */,
+				46EBE4CD1D7438C60050E514 /* ViewController.m in Sources */,
+				46DA0F251D747333007248E5 /* BaseApi.m in Sources */,
+				46DA0F221D7471F7007248E5 /* LoginApi.m in Sources */,
+				46DA0F361D751C4C007248E5 /* CHXHttpProcessor.m in Sources */,
+				46DA0F301D748AAD007248E5 /* NSString+MD5.m in Sources */,
+				46EBE4CA1D7438C60050E514 /* AppDelegate.m in Sources */,
+				46DA0F2F1D748AAD007248E5 /* NSDataExtension.m in Sources */,
+				46DA0F291D7479B0007248E5 /* CHXHttpBatchTask.m in Sources */,
+				46DA0F431D757B91007248E5 /* AppStartApi.m in Sources */,
+				46DA0F1F1D746DBA007248E5 /* CHXHttpEndpoint.m in Sources */,
+				46EBE4C71D7438C60050E514 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		46DA0F4A1D75D56D007248E5 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				46DA0F491D75D56D007248E5 /* Base */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		46EBE4CE1D7438C60050E514 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				46EBE4CF1D7438C60050E514 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		46EBE4D31D7438C60050E514 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				46EBE4D41D7438C60050E514 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		46EBE4D71D7438C60050E514 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		46EBE4D81D7438C60050E514 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		46EBE4DA1D7438C60050E514 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2E9812169B98FA1C6FEFA26C /* Pods-CHXHttp.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = CHXHttp/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.mochxiao.CHXHttp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		46EBE4DB1D7438C60050E514 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 927D6E2C6CD066E769B35881 /* Pods-CHXHttp.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = CHXHttp/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.mochxiao.CHXHttp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		46EBE4BD1D7438C60050E514 /* Build configuration list for PBXProject "CHXHttp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				46EBE4D71D7438C60050E514 /* Debug */,
+				46EBE4D81D7438C60050E514 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		46EBE4D91D7438C60050E514 /* Build configuration list for PBXNativeTarget "CHXHttp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				46EBE4DA1D7438C60050E514 /* Debug */,
+				46EBE4DB1D7438C60050E514 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 46EBE4BA1D7438C60050E514 /* Project object */;
+}

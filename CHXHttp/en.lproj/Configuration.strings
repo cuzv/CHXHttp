@@ -1,0 +1,10 @@
+/* 
+  Configuration.strings
+  CHXHttp
+
+  Created by Moch Xiao on 8/30/16.
+  Copyright © 2016 Moch Xiao. All rights reserved.
+*/
+
+host = "https://app.testapi.haioo.com";
+token = "5XN%6mMXQ5U$RI^n";
