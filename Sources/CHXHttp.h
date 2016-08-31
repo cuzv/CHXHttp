@@ -9,5 +9,10 @@
 #ifndef CHXHttp_h
 #define CHXHttp_h
 
+#import "CHXHttpRequest.h"
+#import "CHXHttpResponse.h"
+#import "CHXHttpEndpoint.h"
+#import "CHXHttpBatchTask.h"
+
 
 #endif /* CHXHttp_h */

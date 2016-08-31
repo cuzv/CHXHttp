@@ -17,6 +17,8 @@
 		46DA0F361D751C4C007248E5 /* CHXHttpProcessor.m in Sources */ = {isa = PBXBuildFile; fileRef = 46DA0F351D751C4C007248E5 /* CHXHttpProcessor.m */; };
 		46DA0F431D757B91007248E5 /* AppStartApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 46DA0F421D757B91007248E5 /* AppStartApi.m */; };
 		46DA0F481D75D56D007248E5 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 46DA0F4A1D75D56D007248E5 /* Localizable.strings */; };
+		46DA0F4E1D767454007248E5 /* DownloadApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 46DA0F4D1D767454007248E5 /* DownloadApi.m */; };
+		46DA0F531D768B1E007248E5 /* UploadApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 46DA0F521D768B1E007248E5 /* UploadApi.m */; };
 		46EBE4C71D7438C60050E514 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 46EBE4C61D7438C60050E514 /* main.m */; };
 		46EBE4CA1D7438C60050E514 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 46EBE4C91D7438C60050E514 /* AppDelegate.m */; };
 		46EBE4CD1D7438C60050E514 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46EBE4CC1D7438C60050E514 /* ViewController.m */; };
@@ -49,6 +51,10 @@
 		46DA0F421D757B91007248E5 /* AppStartApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppStartApi.m; sourceTree = "<group>"; };
 		46DA0F441D758240007248E5 /* CHXHttp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CHXHttp.h; sourceTree = "<group>"; };
 		46DA0F491D75D56D007248E5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		46DA0F4C1D767454007248E5 /* DownloadApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadApi.h; sourceTree = "<group>"; };
+		46DA0F4D1D767454007248E5 /* DownloadApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadApi.m; sourceTree = "<group>"; };
+		46DA0F511D768B1E007248E5 /* UploadApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UploadApi.h; sourceTree = "<group>"; };
+		46DA0F521D768B1E007248E5 /* UploadApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UploadApi.m; sourceTree = "<group>"; };
 		46EBE4C21D7438C60050E514 /* CHXHttp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CHXHttp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		46EBE4C61D7438C60050E514 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		46EBE4C81D7438C60050E514 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -119,6 +125,10 @@
 				46DA0F211D7471F7007248E5 /* LoginApi.m */,
 				46DA0F411D757B91007248E5 /* AppStartApi.h */,
 				46DA0F421D757B91007248E5 /* AppStartApi.m */,
+				46DA0F4C1D767454007248E5 /* DownloadApi.h */,
+				46DA0F4D1D767454007248E5 /* DownloadApi.m */,
+				46DA0F511D768B1E007248E5 /* UploadApi.h */,
+				46DA0F521D768B1E007248E5 /* UploadApi.m */,
 				46EBE4C81D7438C60050E514 /* AppDelegate.h */,
 				46EBE4C91D7438C60050E514 /* AppDelegate.m */,
 				46EBE4CB1D7438C60050E514 /* ViewController.h */,
@@ -298,8 +308,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				46DA0F331D751991007248E5 /* NSDictionary+Extension.m in Sources */,
+				46DA0F531D768B1E007248E5 /* UploadApi.m in Sources */,
 				46EBE4CD1D7438C60050E514 /* ViewController.m in Sources */,
 				46DA0F251D747333007248E5 /* BaseApi.m in Sources */,
+				46DA0F4E1D767454007248E5 /* DownloadApi.m in Sources */,
 				46DA0F221D7471F7007248E5 /* LoginApi.m in Sources */,
 				46DA0F361D751C4C007248E5 /* CHXHttpProcessor.m in Sources */,
 				46DA0F301D748AAD007248E5 /* NSString+MD5.m in Sources */,

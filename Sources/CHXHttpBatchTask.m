@@ -43,11 +43,11 @@
     return self;
 }
 
-- (nonnull __kindof CHXHttpBatchTask *)responseSuccess:(nonnull void(^)(__kindof CHXHttpBatchTask *_Nonnull batchTask, NSArray<id> *_Nullable objs))successHandler {
+- (nonnull __kindof CHXHttpBatchTask *)responseSuccess:(nonnull void(^)(__kindof CHXHttpBatchTask *_Nonnull batchTask, NSArray<id> *_Nullable results))successHandler {
     return [self responseSuccess:successHandler deliverOnMainThread:YES];
 }
 
-- (nonnull __kindof CHXHttpBatchTask *)responseSuccess:(nonnull void(^)(__kindof CHXHttpBatchTask *_Nonnull batchTask, NSArray<id> *_Nonnull objs))successHandler deliverOnMainThread:(BOOL)deliverOnMainThread {
+- (nonnull __kindof CHXHttpBatchTask *)responseSuccess:(nonnull void(^)(__kindof CHXHttpBatchTask *_Nonnull batchTask, NSArray<id> *_Nonnull results))successHandler deliverOnMainThread:(BOOL)deliverOnMainThread {
     NSMutableArray<id> *results = [NSMutableArray arrayWithCapacity:self.endpoints.count];
     for (NSInteger index = 0; index < self.endpoints.count; ++index) {
         [results addObject:[NSNull null]];

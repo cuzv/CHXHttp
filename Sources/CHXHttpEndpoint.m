@@ -12,6 +12,9 @@
 #import "CHXHttpResponse.h"
 #import "CHXHttpProcessor.h"
 
+#define NSUINT_BIT (CHAR_BIT * sizeof(NSUInteger))
+#define NSUINTROTATE(val, howmuch) ((((NSUInteger)val) << howmuch) | (((NSUInteger)val) >> (NSUINT_BIT - howmuch)))
+
 #pragma mark - CHXHttpEndpointWrapper
 
 @implementation CHXHttpEndpointWrapper
@@ -126,7 +129,14 @@
 }
 
 - (NSUInteger)hash {
-    return self.proxy.url.hash + self.proxy.headers.hash + self.proxy.bodies.hash;
+    NSUInteger _hash = self.proxy.url.hash;
+    if (self.proxy.headers) {
+        _hash = NSUINTROTATE(_hash, NSUINT_BIT / 2) ^ self.proxy.headers.hash;
+    }
+    if (self.proxy.bodies) {
+        _hash ^= NSUINTROTATE(_hash, NSUINT_BIT / 2) ^ self.proxy.bodies.hash;
+    }
+    return _hash;
 }
 
 - (BOOL)isEqual:(id)object {
@@ -172,11 +182,21 @@
     return self;
 }
 
-- (nonnull __kindof CHXHttpEndpoint *)responseSuccess:(nonnull void(^)(__kindof CHXHttpEndpoint *_Nonnull endpoint, id _Nonnull obj))successHandler {
+- (nonnull __kindof CHXHttpEndpoint *)suspendRequest {
+    [[CHXHttpProcessor sharedInstance] suspendEndpoint:self.proxy];
+    return self;
+}
+
+- (nonnull __kindof CHXHttpEndpoint *)resumeRequest {
+    [[CHXHttpProcessor sharedInstance] resumeEndpoint:self.proxy];
+    return self;
+}
+
+- (nonnull __kindof CHXHttpEndpoint *)responseSuccess:(nonnull void(^)(__kindof CHXHttpEndpoint *_Nonnull endpoint, id _Nonnull result))successHandler {
     return [self responseSuccess:successHandler deliverOnMainThread:YES];
 }
 
-- (nonnull __kindof CHXHttpEndpoint *)responseSuccess:(nonnull void(^)(__kindof CHXHttpEndpoint *_Nonnull endpoint, id _Nonnull obj))successHandler deliverOnMainThread:(BOOL)deliverOnMainThread {
+- (nonnull __kindof CHXHttpEndpoint *)responseSuccess:(nonnull void(^)(__kindof CHXHttpEndpoint *_Nonnull endpoint, id _Nonnull result))successHandler deliverOnMainThread:(BOOL)deliverOnMainThread {
     dispatch_async(self.queue, ^{
         if (!self.proxy.success) {
             return;

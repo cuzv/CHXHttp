@@ -18,5 +18,7 @@
 
 - (void)addEndpoint:(nonnull __kindof CHXHttpEndpoint<CHXHttpRequest, CHXHttpResponse> *)endpoint;
 - (void)removeEndpoint:(nonnull __kindof CHXHttpEndpoint<CHXHttpRequest, CHXHttpResponse> *)endpoint;
+- (void)suspendEndpoint:(nonnull __kindof CHXHttpEndpoint<CHXHttpRequest, CHXHttpResponse> *)endpoint;
+- (void)resumeEndpoint:(nonnull __kindof CHXHttpEndpoint<CHXHttpRequest, CHXHttpResponse> *)endpoint;
 
 @end

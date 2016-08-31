@@ -80,13 +80,13 @@
                         _chx_handlerEmptyResponseSuccess(self, endpoint, @"SUCCESS", filePath.absoluteString);
                     }
                 };
-                
                 if ([endpoint respondsToSelector:@selector(resumeData)] && endpoint.resumeData) {
                     endpoint.wrapper.sessionTask =
                         [manager downloadTaskWithResumeData:endpoint.resumeData
                                                    progress:endpoint.progressHander
                                                 destination:destination
                                           completionHandler:completionHandler];
+                    [endpoint.wrapper.sessionTask resume];
                 } else {
                     NSURLRequest *request = [manager.requestSerializer requestWithMethod:@"GET"
                                                                                URLString:endpoint.url
@@ -97,6 +97,7 @@
                                                 progress:endpoint.progressHander
                                              destination:destination
                                        completionHandler:completionHandler];
+                    [endpoint.wrapper.sessionTask resume];
                 }
             } else {
                 endpoint.wrapper.sessionTask =
@@ -182,6 +183,14 @@ NSTimeInterval _chx_timeout(__kindof CHXHttpEndpoint<CHXHttpRequest, CHXHttpResp
 - (void)removeEndpoint:(nonnull __kindof CHXHttpEndpoint<CHXHttpRequest, CHXHttpResponse> *)endpoint {
     [endpoint.wrapper.sessionTask cancel];
     [self.tasks removeObject:endpoint];
+}
+
+- (void)suspendEndpoint:(nonnull __kindof CHXHttpEndpoint<CHXHttpRequest, CHXHttpResponse> *)endpoint {
+    [endpoint.wrapper.sessionTask suspend];
+}
+
+- (void)resumeEndpoint:(nonnull __kindof CHXHttpEndpoint<CHXHttpRequest, CHXHttpResponse> *)endpoint {
+    [endpoint.wrapper.sessionTask resume];
 }
 
 #pragma mark - Handle result

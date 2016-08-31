@@ -29,14 +29,17 @@
 
 - (nonnull __kindof CHXHttpEndpoint *)startRequest;
 - (nonnull __kindof CHXHttpEndpoint *)stopRequest;
+- (nonnull __kindof CHXHttpEndpoint *)suspendRequest;
+- (nonnull __kindof CHXHttpEndpoint *)resumeRequest;
 
-- (nonnull __kindof CHXHttpEndpoint *)responseSuccess:(nonnull void(^)(__kindof CHXHttpEndpoint *_Nonnull endpoint, id _Nonnull obj))successHandler;
-- (nonnull __kindof CHXHttpEndpoint *)responseSuccess:(nonnull void(^)(__kindof CHXHttpEndpoint *_Nonnull endpoint, id _Nonnull obj))successHandler deliverOnMainThread:(BOOL)deliverOnMainThread;
+- (nonnull __kindof CHXHttpEndpoint *)responseSuccess:(nonnull void(^)(__kindof CHXHttpEndpoint *_Nonnull endpoint, id _Nonnull result))successHandler;
+- (nonnull __kindof CHXHttpEndpoint *)responseSuccess:(nonnull void(^)(__kindof CHXHttpEndpoint *_Nonnull endpoint, id _Nonnull result))successHandler deliverOnMainThread:(BOOL)deliverOnMainThread;
 
 - (nonnull __kindof CHXHttpEndpoint *)responseFailure:(nonnull void(^)(__kindof CHXHttpEndpoint *_Nonnull endpoint, NSError *_Nonnull error))failureHandler;
 - (nonnull __kindof CHXHttpEndpoint *)responseFailure:(nonnull void(^)(__kindof CHXHttpEndpoint *_Nonnull endpoint, NSError *_Nonnull error))failureHandler deliverOnMainThread:(BOOL)deliverOnMainThread;
 
 /// `Get`: download progress, `POST`: upload progress.
+/// **This callback runs in background thread.**
 @property (nonatomic, copy, nullable) void (^progressHander)(NSProgress * _Nullable);
 
 
