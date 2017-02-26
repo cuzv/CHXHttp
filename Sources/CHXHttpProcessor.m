@@ -28,47 +28,59 @@
 #import "CHXHttpResponse.h"
 #import "AFNetworking.h"
 
-@interface CHXHttpProcessor()
-@property (nonatomic, strong) NSMutableSet<CHXHttpEndpoint *> *tasks;
-@end
+// synchronized
+#define SYNCHRONIZED(...) dispatch_semaphore_wait(self->_lock, DISPATCH_TIME_FOREVER); \
+__VA_ARGS__; \
+dispatch_semaphore_signal(self->_lock);
 
-@implementation CHXHttpProcessor
+@implementation CHXHttpProcessor {
+    @private
+    NSMutableSet<CHXHttpEndpoint *> *_tasks;
+    dispatch_semaphore_t _lock;
+}
 
 + (nonnull CHXHttpProcessor *)sharedInstance {
     static dispatch_once_t pred;
-    static CHXHttpProcessor *singleton = nil;
-    
+    static CHXHttpProcessor *singleton;
     dispatch_once(&pred, ^{
-        singleton = [CHXHttpProcessor new];
+        dispatch_semaphore_t lock = dispatch_semaphore_create(1);
+        NSMutableSet<CHXHttpEndpoint *> *tasks = [NSMutableSet new];
+        singleton = [[self alloc] initWithLock:lock tasks:tasks];
     });
-    
     return singleton;
 }
 
-- (instancetype)init {
+- (instancetype)initWithLock:(dispatch_semaphore_t)lock tasks:(NSMutableSet<CHXHttpEndpoint *> *)tasks {
     self = [super init];
     if (!self) {
         return nil;
     }
-    
-    _tasks = [NSMutableSet new];
-    
+    _lock = lock;
+    _tasks = tasks;
     return self;
 }
 
-- (void)addEndpoint:(nonnull __kindof CHXHttpEndpoint<CHXHttpRequest, CHXHttpResponse> *)endpoint {
-    [self.tasks addObject:endpoint];
+- (instancetype)init {
+    @throw [NSException exceptionWithName:@"CHXHttpProcessor init error" reason:@"Use 'sharedInstance' to get instance." userInfo:nil];
+    return [super init];
+}
 
-    // 开启请求
+- (void)addEndpoint:(nonnull __kindof CHXHttpEndpoint<CHXHttpRequest, CHXHttpResponse> *)endpoint {
+    SYNCHRONIZED([_tasks addObject:endpoint];)
+    if (![_tasks containsObject:endpoint]) {
+        return;
+    }
+    
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.operationQueue.maxConcurrentOperationCount = 10;
-    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-    manager.requestSerializer.timeoutInterval = _chx_timeout(endpoint);
-    
+
+    AFHTTPRequestSerializer <AFURLRequestSerialization> * requestSerializer = _chx_requestSerializer(endpoint);
+    requestSerializer.timeoutInterval = _chx_timeout(endpoint);
     [endpoint.headers enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
-        [manager.requestSerializer setValue:obj forHTTPHeaderField:key];
+        [requestSerializer setValue:obj forHTTPHeaderField:key];
     }];
+    manager.requestSerializer = requestSerializer;
     
+    manager.responseSerializer = _chx_responseSerializer(endpoint);
     
     @weakify(endpoint);
     void (^success)(NSURLSessionDataTask *, id) = ^(NSURLSessionDataTask *task, id responseObject) {
@@ -188,22 +200,67 @@
 }
 
 NSTimeInterval _chx_timeout(__kindof CHXHttpEndpoint<CHXHttpRequest, CHXHttpResponse> * _Nonnull endpoint) {
-    if ([endpoint respondsToSelector:@selector(timeoutIntervalForRequest)]) {
-        return endpoint.timeoutIntervalForRequest;
+    if ([endpoint respondsToSelector:@selector(timeout)]) {
+        return endpoint.timeout;
     }
     return 10;
 }
 
+AFHTTPRequestSerializer <AFURLRequestSerialization> *_chx_requestSerializer(__kindof CHXHttpEndpoint<CHXHttpRequest, CHXHttpResponse> * _Nonnull endpoint) {
+    if ([endpoint respondsToSelector:@selector(encoding)]) {
+        CHXHttpEncoding encodgin = [endpoint encoding];
+        switch (encodgin) {
+            case CHXHttpEncodingJson:
+                return [AFJSONRequestSerializer serializer];
+            case CHXHttpEncodingPropertyList:
+                return [AFPropertyListRequestSerializer serializer];
+            default:
+                break;
+        }
+    }
+    return [AFHTTPRequestSerializer serializer];
+}
+
+AFHTTPResponseSerializer <AFURLResponseSerialization> *_chx_responseSerializer(__kindof CHXHttpEndpoint<CHXHttpRequest, CHXHttpResponse> * _Nonnull endpoint) {
+    if ([endpoint respondsToSelector:@selector(decoding)]) {
+        CHXHttpDecoding decoding = [endpoint decoding];
+        switch (decoding) {
+            case CHXHttpDecodingJson:
+                return [AFJSONResponseSerializer serializer];
+            case CHXHttpDecodingPropertyList:
+                return [AFPropertyListResponseSerializer serializer];
+            case CHXHttpDecodingXml:
+                return [AFXMLParserResponseSerializer serializer];
+            case CHXHttpDecodingImage:
+                return [AFImageResponseSerializer serializer];
+            case CHXHttpDecodingCompound:
+                return [AFCompoundResponseSerializer serializer];
+            default:
+                break;
+        }
+    }
+    return [AFHTTPResponseSerializer serializer];
+}
+
 - (void)removeEndpoint:(nonnull __kindof CHXHttpEndpoint<CHXHttpRequest, CHXHttpResponse> *)endpoint {
+    if (![_tasks containsObject:endpoint]) {
+        return;
+    }
+    SYNCHRONIZED([_tasks removeObject:endpoint];);
     [endpoint.wrapper.sessionTask cancel];
-    [self.tasks removeObject:endpoint];
 }
 
 - (void)suspendEndpoint:(nonnull __kindof CHXHttpEndpoint<CHXHttpRequest, CHXHttpResponse> *)endpoint {
+    if (![_tasks containsObject:endpoint]) {
+        return;
+    }
     [endpoint.wrapper.sessionTask suspend];
 }
 
 - (void)resumeEndpoint:(nonnull __kindof CHXHttpEndpoint<CHXHttpRequest, CHXHttpResponse> *)endpoint {
+    if (![_tasks containsObject:endpoint]) {
+        return;
+    }
     [endpoint.wrapper.sessionTask resume];
 }
 
@@ -219,13 +276,13 @@ void _chx_handleSuccess(CHXHttpProcessor *_Nonnull receiver,
         return;
     }
     
-    NSDictionary<NSString *, NSObject *> *dict = endpoint.responseObjectSerializer(responseObject);
-    if (!dict) {
+    NSDictionary<NSString *, NSObject *> *dic = endpoint.decodingResponse(responseObject);
+    if (!dic) {
         NSError *error = _chx_makeError(-1023, @"Server Response Data Deserialize Failed.");
         _chx_handleFailure(receiver, endpoint, error);
         return;
     }
-    endpoint.wrapper.responseObject = dict;
+    endpoint.wrapper.responseObject = dic;
     
     if (!endpoint.success) {
         NSError *error = _chx_makeError(endpoint.code, endpoint.message ?: @"Empty Error Message.");
@@ -234,7 +291,6 @@ void _chx_handleSuccess(CHXHttpProcessor *_Nonnull receiver,
     }
     
     [endpoint requestComplete];
-    
     [receiver removeEndpoint:endpoint];
 }
 
@@ -247,7 +303,6 @@ void _chx_handlerEmptyResponseSuccess(CHXHttpProcessor *_Nonnull receiver,
                                         endpoint.messageFieldName:message,
                                         endpoint.resultFieldName:result};
     [endpoint requestComplete];
-    
     [receiver removeEndpoint:endpoint];
 }
 
@@ -256,9 +311,7 @@ void _chx_handleFailure(CHXHttpProcessor *_Nonnull receiver,
                         NSError * _Nonnull error)
 {
     endpoint.wrapper.error = error;
-    
     [endpoint requestComplete];
-    
     [receiver removeEndpoint:endpoint];
 }
 

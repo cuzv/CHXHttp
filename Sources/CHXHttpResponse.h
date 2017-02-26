@@ -26,6 +26,17 @@
 
 #import <Foundation/Foundation.h>
 
+typedef NS_ENUM(NSInteger, CHXHttpDecoding) {
+    CHXHttpDecodingForm,
+    CHXHttpDecodingJson,
+    CHXHttpDecodingPropertyList,
+    CHXHttpDecodingXml,
+    CHXHttpDecodingImage,
+    CHXHttpDecodingCompound
+};
+
+typedef NSDictionary<NSString *, NSObject *> *_Nonnull(^DecodingHandler)(_Nonnull id);
+
 @protocol CHXHttpResponse <NSObject>
 
 @required
@@ -35,11 +46,12 @@
 - (nonnull NSString *)messageFieldName;
 - (nonnull NSString *)resultFieldName;
 
-typedef NSDictionary<NSString *, NSObject *> *_Nonnull(^ResponseObjectSerializer)(_Nonnull id);
-- (nonnull ResponseObjectSerializer)responseObjectSerializer;
 
 @optional
 
+- (CHXHttpDecoding)decoding;
+/// Call after AF decoded if provided.
+- (nonnull DecodingHandler)decodingResponse;
 - (BOOL)enableResponseLog;
 
 @end

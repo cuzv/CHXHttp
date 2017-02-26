@@ -160,10 +160,10 @@
 				46DA0F371D7526CD007248E5 /* CHXHttpEndpoint+Internal.h */,
 				46DA0F1D1D746DBA007248E5 /* CHXHttpEndpoint.h */,
 				46DA0F1E1D746DBA007248E5 /* CHXHttpEndpoint.m */,
-				46DA0F271D7479B0007248E5 /* CHXHttpBatchTask.h */,
-				46DA0F281D7479B0007248E5 /* CHXHttpBatchTask.m */,
 				46DA0F341D751C4C007248E5 /* CHXHttpProcessor.h */,
 				46DA0F351D751C4C007248E5 /* CHXHttpProcessor.m */,
+				46DA0F271D7479B0007248E5 /* CHXHttpBatchTask.h */,
+				46DA0F281D7479B0007248E5 /* CHXHttpBatchTask.m */,
 			);
 			path = Sources;
 			sourceTree = "<group>";

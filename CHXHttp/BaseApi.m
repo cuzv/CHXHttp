@@ -77,10 +77,11 @@
 
 - (NSString *)_chx_dataSignature {
     NSMutableArray<NSString *> *arr = [@[NSLocalizedString(@"api_token", nil), @"v1", self.proxy.clazz, self.proxy.function] mutableCopy];
+    NSMutableString *str = [[NSMutableString alloc] initWithString:[arr componentsJoinedByString:@"/"]];
     if (self.bodies) {
-        [arr addObject:self.bodies.queryString];
+        [str appendString:self.bodies.queryString];
     }
-    return [arr componentsJoinedByString:@"/"].MD5Digest;
+    return str.MD5Digest;
 }
 
 - (NSDictionary *)bodies {
@@ -109,7 +110,7 @@
     return  @"result";
 }
 
-- (ResponseObjectSerializer)responseObjectSerializer {
+- (nonnull DecodingHandler)decodingResponse {
     return ^(id rep) {
         return [rep chx_JSONObject];
     };

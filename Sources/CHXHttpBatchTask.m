@@ -23,6 +23,8 @@
 
 #import "CHXHttpBatchTask.h"
 
+extern NSError * _chx_makeError(NSInteger code, NSString *message);
+
 @interface CHXHttpBatchTask ()
 @property (nonatomic, copy, readwrite, nonnull) NSArray<CHXHttpEndpoint *> *endpoints;
 @end
@@ -69,7 +71,7 @@
     }
     
     dispatch_group_t group = dispatch_group_create();
-    dispatch_queue_t queue = dispatch_queue_create(@"com.mochxiao.chxhttp.response.queue".UTF8String, DISPATCH_QUEUE_CONCURRENT);
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
 
     [self.endpoints enumerateObjectsUsingBlock:^(CHXHttpEndpoint * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         dispatch_group_enter(group);
@@ -92,30 +94,38 @@
     return self;
 }
 
-- (nonnull __kindof CHXHttpBatchTask *)responseFailure:(nonnull void(^)(__kindof CHXHttpBatchTask *_Nonnull batchTask, NSError *_Nonnull error))failureHandler {
+- (nonnull __kindof CHXHttpBatchTask *)responseFailure:(nonnull void(^)(__kindof CHXHttpBatchTask *_Nonnull batchTask, NSArray<NSError *> *_Nonnull errors))failureHandler {
     return [self responseFailure:failureHandler deliverOnMainThread:YES];
 }
 
-- (nonnull __kindof CHXHttpBatchTask *)responseFailure:(nonnull void(^)(__kindof CHXHttpBatchTask *_Nonnull batchTask, NSError *_Nonnull error))failureHandler deliverOnMainThread:(BOOL)deliverOnMainThread {
+- (nonnull __kindof CHXHttpBatchTask *)responseFailure:(nonnull void(^)(__kindof CHXHttpBatchTask *_Nonnull batchTask, NSArray<NSError *> *_Nonnull errors))failureHandler deliverOnMainThread:(BOOL)deliverOnMainThread {
+    NSMutableArray<NSError *> *results = [NSMutableArray arrayWithCapacity:self.endpoints.count];
+    NSError *error = _chx_makeError(-1022, @"Placeholder error");
+    for (NSInteger index = 0; index < self.endpoints.count; ++index) {
+        [results addObject:error];
+    }
+    
+    dispatch_group_t group = dispatch_group_create();
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    
     [self.endpoints enumerateObjectsUsingBlock:^(CHXHttpEndpoint * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        dispatch_group_enter(group);
         [obj responseFailure:^(__kindof CHXHttpEndpoint * _Nonnull endpoint, NSError * _Nonnull error) {
-            if (endpoint.success) {
-                return;
-            }
-            if (deliverOnMainThread) {
-                dispatch_async(dispatch_get_main_queue(), ^{
-                   failureHandler(self, error);
-                });
-            } else {
-                failureHandler(self, error);
-            }
-            *stop = YES;
+            results[idx] = error;
+            dispatch_group_leave(group);
         }];
     }];
     
+    dispatch_group_notify(group, queue, ^{
+        if (deliverOnMainThread) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                failureHandler(self, results);
+            });
+        } else {
+            failureHandler(self, results);
+        }
+    });
     return self;
-
 }
-
 
 @end

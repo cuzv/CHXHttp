@@ -46,6 +46,12 @@ typedef NS_ENUM(NSInteger, CHXHttpMethod) {
     CHXHttpMethodDelete
 };
 
+typedef NS_ENUM(NSInteger, CHXHttpEncoding) {
+    CHXHttpEncodingForm,
+    CHXHttpEncodingJson,
+    CHXHttpEncodingPropertyList
+};
+
 @protocol CHXHttpRequest <NSObject>
 
 @required
@@ -57,8 +63,11 @@ typedef NS_ENUM(NSInteger, CHXHttpMethod) {
 
 @optional
 
+/// Http request paramters encoding, `CHXHttpParameterEncodingUrl` by default.
+- (CHXHttpEncoding)encoding;
+
 /// Default value `10s`
-- (NSTimeInterval)timeoutIntervalForRequest;
+- (NSTimeInterval)timeout;
 - (BOOL)enableRequestLog;
 
 // Upload

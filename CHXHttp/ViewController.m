@@ -46,7 +46,7 @@
 }
 
 - (IBAction)handleApiAction:(UIButton *)sender {
-    LoginApi *login = [[[LoginApi alloc] initWithUsername:@"18583221776" password:@"111111"] startRequest];
+    LoginApi *login = [[[LoginApi alloc] initWithUsername:@"13488888888" password:@"123456"] startRequest];
     
     [login responseFailure:^(LoginApi *endpoint, NSError * _Nullable error) {
         NSLog(@"Error: %@", error);
@@ -58,7 +58,7 @@
 
 - (IBAction)handleMultipleApiAction:(UIButton *)sender {
     AppStartApi *start = [AppStartApi new];
-    LoginApi *login = [[LoginApi alloc] initWithUsername:@"18583221776" password:@"111111"];
+    LoginApi *login = [[LoginApi alloc] initWithUsername:@"13488888888" password:@"123456"];
     
     login.progressHandler = ^(NSProgress *progress) {
         NSLog(@"progress: %f", progress.completedUnitCount * 1.0f / progress.totalUnitCount * 1.0f );
@@ -66,13 +66,11 @@
     
     CHXHttpBatchTask *batchTask = [[CHXHttpBatchTask alloc] initWithEndpoints:@[start, login]];
     [batchTask startRequest];
-    
-    [batchTask responseFailure:^(__kindof CHXHttpBatchTask * _Nonnull batchTask, NSError * _Nullable error) {
-        NSLog(@"FILURE: %@", error);
-    }];
-
     [batchTask responseSuccess:^(__kindof CHXHttpBatchTask * _Nonnull batchTask, NSArray<id> * _Nullable results) {
         NSLog(@"SUCCESS: %@", results);
+    }];
+    [batchTask responseFailure:^(__kindof CHXHttpBatchTask * _Nonnull batchTask, NSArray<NSError *> * _Nonnull errors) {
+        NSLog(@"FILURE: %@", errors);
     }];
     
 }
