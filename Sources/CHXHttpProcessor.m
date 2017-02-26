@@ -66,10 +66,11 @@ dispatch_semaphore_signal(self->_lock);
 }
 
 - (void)addEndpoint:(nonnull __kindof CHXHttpEndpoint<CHXHttpRequest, CHXHttpResponse> *)endpoint {
-    SYNCHRONIZED([_tasks addObject:endpoint];)
-    if (![_tasks containsObject:endpoint]) {
-        return;
-    }
+    SYNCHRONIZED(
+         BOOL contains = [_tasks containsObject:endpoint];
+         if (!contains) { [_tasks addObject:endpoint];}
+     );
+    if (contains) { return; }
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
 
@@ -243,25 +244,27 @@ AFHTTPResponseSerializer <AFURLResponseSerialization> *_chx_responseSerializer(_
 }
 
 - (void)removeEndpoint:(nonnull __kindof CHXHttpEndpoint<CHXHttpRequest, CHXHttpResponse> *)endpoint {
-    if (![_tasks containsObject:endpoint]) {
-        return;
+    SYNCHRONIZED(
+         BOOL contains = [_tasks containsObject:endpoint];
+         if (contains) { [_tasks removeObject:endpoint];}
+    );
+    if (contains) {
+        [endpoint.wrapper.sessionTask cancel];
     }
-    SYNCHRONIZED([_tasks removeObject:endpoint];);
-    [endpoint.wrapper.sessionTask cancel];
 }
 
 - (void)suspendEndpoint:(nonnull __kindof CHXHttpEndpoint<CHXHttpRequest, CHXHttpResponse> *)endpoint {
-    if (![_tasks containsObject:endpoint]) {
-        return;
+    SYNCHRONIZED(BOOL contains = [_tasks containsObject:endpoint];);
+    if (contains) {
+        [endpoint.wrapper.sessionTask suspend];
     }
-    [endpoint.wrapper.sessionTask suspend];
 }
 
 - (void)resumeEndpoint:(nonnull __kindof CHXHttpEndpoint<CHXHttpRequest, CHXHttpResponse> *)endpoint {
-    if (![_tasks containsObject:endpoint]) {
-        return;
+    SYNCHRONIZED(BOOL contains = [_tasks containsObject:endpoint];);
+    if (contains) {
+        [endpoint.wrapper.sessionTask resume];
     }
-    [endpoint.wrapper.sessionTask resume];
 }
 
 #pragma mark - Handle result
