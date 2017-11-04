@@ -2,8 +2,8 @@
 //  NSDictionary+Extension.m
 //  CHXHttp
 //
-//  Created by Moch Xiao on 8/30/16.
-//  Copyright © 2016 Moch Xiao. All rights reserved.
+//  Created by Roy Shaw on 8/30/16.
+//  Copyright © 2016 Roy Shaw. All rights reserved.
 //
 
 #import "NSDictionary+Extension.h"

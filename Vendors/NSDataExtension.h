@@ -2,8 +2,8 @@
 //  NSDataExtension.h
 //  GettingStarted
 //
-//  Created by Moch Xiao on 2014-11-20.
-//  Copyright (c) 2014 Moch Xiao (https://github.com/cuzv).
+//  Created by Roy Shaw on 2014-11-20.
+//  Copyright (c) 2014 Red Rain (https://github.com/cuzv).
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal

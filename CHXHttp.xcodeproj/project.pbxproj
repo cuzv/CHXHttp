@@ -219,7 +219,7 @@
 				TargetAttributes = {
 					46EBE4C11D7438C60050E514 = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = 69FFLZ25N6;
+						DevelopmentTeam = XDN35K5RF2;
 					};
 				};
 			};
@@ -448,7 +448,7 @@
 			baseConfigurationReference = 2E9812169B98FA1C6FEFA26C /* Pods-CHXHttp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 69FFLZ25N6;
+				DEVELOPMENT_TEAM = XDN35K5RF2;
 				INFOPLIST_FILE = CHXHttp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mochxiao.CHXHttp;
@@ -461,7 +461,7 @@
 			baseConfigurationReference = 927D6E2C6CD066E769B35881 /* Pods-CHXHttp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 69FFLZ25N6;
+				DEVELOPMENT_TEAM = XDN35K5RF2;
 				INFOPLIST_FILE = CHXHttp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mochxiao.CHXHttp;
